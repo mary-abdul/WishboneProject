@@ -1,9 +1,7 @@
-import './margaret/preResponse'
-import { useState } from 'react'
+{/* alex's code goes here */}
 
 const App = () => {
   return(
-    
   )
 }
 
