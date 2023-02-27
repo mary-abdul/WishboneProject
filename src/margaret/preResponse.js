@@ -1,4 +1,4 @@
-import './stylesheet.css'
+import './preResponse.css'
 
 const preResponse = (props) => {
     return(
