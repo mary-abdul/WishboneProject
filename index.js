@@ -10,6 +10,8 @@ fs.readFile(
   }
 )
 
+app.use(express.static('build'))
+
 app.use(express.json())
 app.get("/api/data", (req, res) => {
   res.json(data)
