@@ -7,7 +7,16 @@
       "voting2": 3,
       "voting1": 5,
       "users": [],
-      "id": 2023-03-01
+      "id": "2023-03-01"
+    },
+    {
+      "question": "day two question",
+      "caption1": "one",
+      "caption2": "two",
+      "voting2": 4,
+      "voting1": 1,
+      "users": [],
+      "id": "2023-03-02"
     }
   ]
 }
