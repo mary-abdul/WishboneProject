@@ -1,56 +1,29 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Note from './Notes'
+
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [show, setShow] = useState(false)
+  const email = "name@missporters.org"
+  const url = 'http://localhost:3001/notes'
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/notes')
+      .get(url)
       .then(response => {
         setNotes(response.data)
         console.log(response.data)
       })
   }, [])
 
-  const addVote2 = (event) => {
-    event.preventDefault()
-    setShow(true)
-    const newVotes = {
-      question: notes[0].question,
-      caption1: notes[0].caption1,
-      caption2: notes[0].caption2,
-      voting1: notes[0].voting1,
-      voting2: (notes[0].voting2)+1}
+ 
+  const onClick = (i) => {
     axios
-      .put('http://localhost:3001/notes/1', newVotes)
-
-      axios
-      .get('http://localhost:3001/notes')
-      .then(response => {
-        setNotes(response.data)
-        console.log(response.data)
-      })
-  }
-  const addVote1 = (event) => {
-    event.preventDefault()
-    setShow(true)
-
-    const newVotes = {
-      question: notes[0].question,
-      caption1: notes[0].caption1,
-      caption2: notes[0].caption2,
-      voting2: notes[0].voting2,
-      voting1: (notes[0].voting1)+1}
-      axios
-      .put('http://localhost:3001/notes/1', newVotes)
-      axios
-      .get('http://localhost:3001/notes')
-      .then(response => {
-        setNotes(response.data)
-        console.log(response.data)
+      .post(url, {vote: i})
+      .then(res => {
+        setNotes(res.data)
+        setShow(true);
       })
   }
 
@@ -87,8 +60,8 @@ if(show){
   
         </div>
       
-          <button onClick = {addVote1}>{notes.length ? notes[0].caption1 : null}</button>
-          <button onClick = {addVote2}>{notes.length ? notes[0].caption2: null}</button>
+          <button onClick = {onClick(0)}>{notes.length ? notes[0].caption1 : null}</button>
+          <button onClick = {onClick(1)}>{notes.length ? notes[0].caption2: null}</button>
 
          
       </div>
