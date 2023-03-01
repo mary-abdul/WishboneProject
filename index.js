@@ -2,11 +2,11 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 
-let data = {}
+let data = []
 fs.readFile(
   './data.json',
   (err, res) => {
-    data = JSON.parse(res)
+    data = JSON.parse(res).notes
   }
 )
 
@@ -23,7 +23,7 @@ app.post("/api/data", (req, res) => {
   
   fs.writeFile(
     './data.json',
-    JSON.stringify(data, null, 2))
+    JSON.stringify({notes: data}, null, 2))
   res.json(data)
 })
 
