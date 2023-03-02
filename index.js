@@ -6,9 +6,10 @@ let data = []
 fs.readFile(
   './data.json',
   (err, res) => {
-    data = JSON.parse(res).notes
-  }
-)
+    if (!err) {
+      data = JSON.parse(res)
+    }
+ )
 
 app.use(express.static('build'))
 
