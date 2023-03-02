@@ -60,8 +60,8 @@ if(show){
   
         </div>
       
-          <button onClick = {onClick(0)}>{notes.length ? notes[0].caption1 : null}</button>
-          <button onClick = {onClick(1)}>{notes.length ? notes[0].caption2: null}</button>
+          <button onClick = () => {onClick(0)}>{notes.length ? notes[0].caption1 : null}</button>
+          <button onClick = () => {onClick(1)}>{notes.length ? notes[0].caption2: null}</button>
 
          
       </div>
